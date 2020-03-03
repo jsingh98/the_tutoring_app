@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1020504336126",
+    "firebase_url": "https://the-tutoring-app.firebaseio.com",
+    "project_id": "the-tutoring-app",
+    "storage_bucket": "the-tutoring-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1020504336126:android:f0fee4d17b5a028029e7af",
+        "android_client_info": {
+          "package_name": "com.example.thetutoringapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1020504336126-t9g2ggn2ccrv54gamqo7a66q1f17speh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.thetutoringapp",
+            "certificate_hash": "c969d2459826c6388ea3e6073b727c5ce12a6ff6"
+          }
+        },
+        {
+          "client_id": "1020504336126-3rbr6eu129vquqd1hnojaqrq554dv34p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBRGXqJu-mnpBjAo7l68rW_uh5Rfs2-kjA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1020504336126-3rbr6eu129vquqd1hnojaqrq554dv34p.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

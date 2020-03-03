@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">The Tutoring App</string>
+    <string name="email">email</string>
+    <string name="pass">pass</string>
+    <string name="login">Login</string>
+    <string name="register">Register</string>
+
+    <string name="choice">Are you a Student or a Tutor?</string>
+    <string name="student">I am a student</string>
+    <string name="tutor">I am a tutor</string>
+
+    <string name="first">Enter First Name</string>
+    <string name="last">Enter Last Name</string>
+    <string name="education">Enter Education Level</string>
+    <string name="password">Enter Password</string>
+    <string name="enteremail">Enter Email</string>
+    <string name="salary">Enter Desired Salary</string>
+    <string name="phone">Enter Phone Number</string>
+
+    <string name="subject">Enter Subjects You Tutor</string>
+
+
+</resources>
