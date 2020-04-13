@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -16,13 +16,17 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 public class MainActivity extends AppCompatActivity {
     private EditText email, pass;
     private Button login, register;
     Dialog d;
-
-    private FirebaseAuth fuego;
+    FirebaseFirestore db;
+    private FirebaseAuth mAuth;
 
 
     @Override
@@ -30,19 +34,63 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        fuego = FirebaseAuth.getInstance();
+
+        db = FirebaseFirestore.getInstance();
+
+        db.collection("app").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if (task.isSuccessful()) {
+                    for (QueryDocumentSnapshot document : task.getResult()) {
+                        Log.d("MYDEBUG",document.getId()+" => "+document.getData());
+                    }
+                } else {
+                    Log.w("MYDEBUG","Error getting documents.",task.getException());
+                }
+            }
+        });
+
+
+
+
+
+        mAuth = FirebaseAuth.getInstance();
 
         email = findViewById(R.id.editText4);
         pass = findViewById(R.id.editText5);
         login = findViewById(R.id.button);
         register = findViewById(R.id.button2);
 
+//        mAuth.createUserWithEmailAndPassword(email.getText().toString(), pass.getText().toString())
+//                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+//                    @Override
+//                    public void onComplete(@NonNull Task<AuthResult> task) {
+//                        if (task.isSuccessful()) {
+//                            // Sign in success, update UI with the signed-in user's information
+//                            //Log.d(TAG, "createUserWithEmail:success");
+//                            FirebaseUser user = mAuth.getCurrentUser();
+//                            //updateUI(user);
+//                        } else {
+//                            // If sign in fails, display a message to the user.
+//                           // Log.w(TAG, "createUserWithEmail:failure", task.getException());
+//                            Toast.makeText( MainActivity.this, "Authentication failed.",
+//                                    Toast.LENGTH_SHORT).show();
+//                          //  updateUI(null);
+//                        }
+//
+//                        // ...
+//                    }
+//                });
+
 
 
     }
 
     public void log(View view) {
-        String log, p;
+
+
+
+        final String log, p;
 
         log = email.getText().toString();
 
@@ -54,22 +102,68 @@ public class MainActivity extends AppCompatActivity {
 
     }
 else {
-        fuego.signInWithEmailAndPassword(log, p).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+        mAuth.signInWithEmailAndPassword(log, p).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
+
+                    // read in email, and search for role
+                    // depending on role, bring to respective dashboard
+
+                    db.collection("app").whereEqualTo("email", log).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                            if (task.isSuccessful()) {
+                                for (QueryDocumentSnapshot document : task.getResult()) {
+                                    Log.d("MYDEBUG", document.getId() + " => " + document.getData());
+                                    String role = document.getString("role");
+
+                                    // might need to use equals to function
+                                    if(role.equals("student")){
+                                        Intent i = new Intent(getApplicationContext(), studentDashboard.class);
+                                        startActivity(i);
+                                    }
+
+                                    if(role.equals("tutor")){
+                                        Intent i = new Intent(getApplicationContext(), tutor_dashboard.class);
+                                        startActivity(i);
+                                    }
+
+                                }
+
+                            } else {
+                                Log.w("MYDEBUG", "Error getting documents.", task.getException());
+                            }
+                        }
+                    });
+
+
+
+
+
                     // make intent to go to tutor or student page
+//                    Intent i = new Intent(getApplicationContext(), studentDashboard.class);
+//                    startActivity(i);
 
                     Toast.makeText(MainActivity.this, "Login with firebase successful", Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(MainActivity.this, "Login with firebase failed", Toast.LENGTH_SHORT).show();
-
+//                    Intent i = new Intent(getApplicationContext(), studentDashboard.class);
+//                    startActivity(i);
                 }
             }
         });
 
     }
+//        Intent i = new Intent(getApplicationContext(), studentDashboard.class);
+//        startActivity(i);
     }
+
+
+
+
+
+
 
     public void register(View view) {
 
