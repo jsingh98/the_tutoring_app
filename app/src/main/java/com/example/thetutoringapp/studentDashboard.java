@@ -36,4 +36,14 @@ public class studentDashboard extends AppCompatActivity {
         Intent i = new Intent(this, find_tutor.class);
         startActivity(i);
     }
+
+    public void goToSettings(View view) {
+        Intent i = new Intent(this, s_settings.class);
+        startActivity(i);
+    }
+
+    public void messages(View view) {
+        Intent i = new Intent(this, student_messages.class);
+        startActivity(i);
+    }
 }

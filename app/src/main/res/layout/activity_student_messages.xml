@@ -2,33 +2,32 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="#00CCCC"
     android:layout_width="match_parent"
+    android:background="#00CCCC"
     android:layout_height="match_parent"
-    tools:context=".find_tutor">
+    tools:context=".student_messages">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/tutorList"
-        android:layout_width="425dp"
-        android:layout_height="603dp"
+        android:id="@+id/recyclerView"
+        android:layout_width="403dp"
+        android:layout_height="564dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText10"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <EditText
-        android:id="@+id/editText10"
-        android:layout_width="215dp"
-        android:layout_height="46dp"
-        android:ems="10"
-        android:hint="@string/search"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.272"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.043" />
+        app:layout_constraintVertical_bias="0.961" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="216dp"
+        android:layout_height="87dp"
+        android:text="@string/friends"
+        app:layout_constraintBottom_toTopOf="@+id/recyclerView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.01"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.743" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

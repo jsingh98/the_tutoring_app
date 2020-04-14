@@ -9,7 +9,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".find_tutor"></activity>
+        <activity android:name=".deleteStudent"></activity>
+        <activity android:name=".changeColor" />
+        <activity android:name=".changeName" />
+        <activity android:name=".reportTutor" />
+        <activity android:name=".student_messages" />
+        <activity android:name=".t_settings" />
+        <activity android:name=".s_settings" />
+        <activity android:name=".find_tutor" />
         <activity android:name=".picture" />
         <activity android:name=".tutor_dashboard" />
         <activity android:name=".splash" />

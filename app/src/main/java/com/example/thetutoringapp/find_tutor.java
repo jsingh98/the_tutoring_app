@@ -34,8 +34,8 @@ public class find_tutor extends AppCompatActivity {
         firebaseFirestore = FirebaseFirestore.getInstance();
         mFirestoreList = findViewById(R.id.tutorList);
 
-    // find all the subject tutored
-        
+        // find all the subject tutored
+
 
         // This is the recycler view stuff below
         // query

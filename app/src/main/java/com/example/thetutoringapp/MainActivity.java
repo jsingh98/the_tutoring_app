@@ -160,8 +160,9 @@ else {
         });
 
     }
-        Intent i = new Intent(getApplicationContext(), studentDashboard.class);
-        startActivity(i);
+        // use the next two lines to skip auth, for testing purposes only
+//        Intent i = new Intent(getApplicationContext(), studentDashboard.class);
+//        startActivity(i);
     }
 
 

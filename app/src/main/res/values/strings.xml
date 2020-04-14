@@ -32,5 +32,19 @@
 
     <string name="search">Search for Subject</string>
 
+    <string name="report">Report a Tutor</string>
+    <string name="user">Change your name</string>
+    <string name="color">Change color of dashboard</string>
+    <string name="delete">Permanently delete your account</string>
+
+    <string name="reportStudent">Report a Student</string>
+
+    <string name="friends">Tutors List</string>
+
+    <string name="chooseReport">What tutor do you want to report?</string>
+    <string name="changeName">What do you want to change your name to?</string>
+    <string name="changeColor">What Color would you like your dashboard to be?</string>
+    <string name="confirmDelete">Are you sure that you want to delete your account?</string>
+
 
 </resources>
