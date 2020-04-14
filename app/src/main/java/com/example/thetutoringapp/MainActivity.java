@@ -90,7 +90,7 @@ else {
                     // read in email, and search for role
                     // depending on role, bring to respective dashboard
 
-                    db.collection("app").whereEqualTo("email", log).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    db.collection("SyzygyStudents").whereEqualTo("email", log).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                         @Override
                         public void onComplete(@NonNull Task<QuerySnapshot> task) {
                             if (task.isSuccessful()) {
@@ -117,7 +117,32 @@ else {
                         }
                     });
 
+                    db.collection("SyzygyTutors").whereEqualTo("email", log).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                            if (task.isSuccessful()) {
+                                for (QueryDocumentSnapshot document : task.getResult()) {
+                                    Log.d("MYDEBUG", document.getId() + " => " + document.getData());
+                                    String role = document.getString("role");
 
+                                    // might need to use equals to function
+                                    if(role.equals("student")){
+                                        Intent i = new Intent(getApplicationContext(), studentDashboard.class);
+                                        startActivity(i);
+                                    }
+
+                                    if(role.equals("tutor")){
+                                        Intent i = new Intent(getApplicationContext(), tutor_dashboard.class);
+                                        startActivity(i);
+                                    }
+
+                                }
+
+                            } else {
+                                Log.w("MYDEBUG", "Error getting documents.", task.getException());
+                            }
+                        }
+                    });
 
 
 

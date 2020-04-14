@@ -79,7 +79,7 @@ public class tutorRegistration extends AppCompatActivity {
         userMap.put("subject", sub);
         userMap.put("role", "tutor");
 
-        mFireStore.collection("app").add(userMap).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+        mFireStore.collection("SyzygyTutors").add(userMap).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
             @Override
             public void onSuccess(DocumentReference documentReference) {
                 // Toast.makeText(studentRegistration.this, "Username added to Firestore", Toast.LENGTH_SHORT).show();

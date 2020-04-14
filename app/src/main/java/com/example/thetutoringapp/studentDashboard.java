@@ -31,4 +31,9 @@ public class studentDashboard extends AppCompatActivity {
             startActivity(i);
 
     }
+
+    public void displayList(View view) {
+        Intent i = new Intent(this, find_tutor.class);
+        startActivity(i);
+    }
 }

@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".picture"></activity>
+        <activity android:name=".find_tutor"></activity>
+        <activity android:name=".picture" />
         <activity android:name=".tutor_dashboard" />
         <activity android:name=".splash" />
         <activity android:name=".studentDashboard" />
@@ -23,6 +24,5 @@
             </intent-filter>
         </activity>
     </application>
-
 
 </manifest>

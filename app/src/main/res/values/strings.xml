@@ -30,5 +30,7 @@
     <string name="takephoto">Take a Photo</string>
     <string name="share">Share Photo</string>
 
+    <string name="search">Search for Subject</string>
+
 
 </resources>
