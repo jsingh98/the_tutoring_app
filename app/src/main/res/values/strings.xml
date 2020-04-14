@@ -27,5 +27,8 @@
     <string name="request">View Requests</string>
     <string name="viewPhotos">View Photos</string>
 
+    <string name="takephoto">Take a Photo</string>
+    <string name="share">Share Photo</string>
+
 
 </resources>

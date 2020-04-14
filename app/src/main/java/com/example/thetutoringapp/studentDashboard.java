@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 
 import java.io.File;
 
@@ -19,12 +20,15 @@ public class studentDashboard extends AppCompatActivity {
 
     public void takePicture(View view) {
 
-//        final Intent shareIntent = new Intent(Intent.ACTION_SEND);
-//        shareIntent.setType("image/jpg");
-//        final File photoFile = new File(getFilesDir(), "foo.jpg");
-//        shareIntent.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(photoFile));
-//        startActivity(Intent.createChooser(shareIntent, "Share image using"));
 
+//        Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
+//        sharingIntent.setType("text/plain");
+//        String shareBody = "Send a picture of your problem";
+//        sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Subject Here");
+//        sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
+//        startActivity(Intent.createChooser(sharingIntent, "Share via"));
+            Intent i = new Intent(this, picture.class);
+            startActivity(i);
 
     }
 }

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="#00CCCC"
+    android:layout_height="match_parent"
+    tools:context=".picture">
+
+    <Button
+        android:id="@+id/tbutton"
+        android:layout_width="120dp"
+        android:layout_height="100dp"
+        android:background="#CCFFFF"
+        android:onClick="takePicture"
+        android:text="@string/takephoto"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.194"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/my" />
+
+    <ImageView
+        android:id="@+id/my"
+        android:layout_width="296dp"
+        android:layout_height="308dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.182"
+        tools:srcCompat="@tools:sample/backgrounds/scenic" />
+
+    <Button
+        android:id="@+id/shareButton"
+        android:layout_width="120dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="52dp"
+        android:background="#CCFFFF"
+        android:text="@string/share"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/tbutton"
+        app:layout_constraintTop_toBottomOf="@+id/my" />
+</androidx.constraintlayout.widget.ConstraintLayout>
