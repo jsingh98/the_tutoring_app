@@ -79,19 +79,79 @@ public class tutorRegistration extends AppCompatActivity {
         userMap.put("subject", sub);
         userMap.put("role", "tutor");
 
-        mFireStore.collection("SyzygyTutors").add(userMap).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-            @Override
-            public void onSuccess(DocumentReference documentReference) {
-                // Toast.makeText(studentRegistration.this, "Username added to Firestore", Toast.LENGTH_SHORT).show();
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                // Toast.makeText(studentRegistration.this, "Username NOT ADDED", Toast.LENGTH_SHORT).show();
+        if(sub.equals("Math") || sub.equals("math")){
+            mFireStore.collection("MathTutors").add(userMap).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                @Override
+                public void onSuccess(DocumentReference documentReference) {
+                    // Toast.makeText(studentRegistration.this, "Username added to Firestore", Toast.LENGTH_SHORT).show();
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    // Toast.makeText(studentRegistration.this, "Username NOT ADDED", Toast.LENGTH_SHORT).show();
 
-            }
-        });
+                }
+            });
+        } // end of if statement for Math tutors
+        if(sub.equals("English") || sub.equals("english")){
+            mFireStore.collection("EnglishTutors").add(userMap).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                @Override
+                public void onSuccess(DocumentReference documentReference) {
+                    // Toast.makeText(studentRegistration.this, "Username added to Firestore", Toast.LENGTH_SHORT).show();
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    // Toast.makeText(studentRegistration.this, "Username NOT ADDED", Toast.LENGTH_SHORT).show();
 
+                }
+            });
+        }
+        if(sub.equals("Science") || sub.equals("science")){
+            mFireStore.collection("ScienceTutors").add(userMap).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                @Override
+                public void onSuccess(DocumentReference documentReference) {
+                    // Toast.makeText(studentRegistration.this, "Username added to Firestore", Toast.LENGTH_SHORT).show();
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    // Toast.makeText(studentRegistration.this, "Username NOT ADDED", Toast.LENGTH_SHORT).show();
+
+                }
+            });
+        }
+        if(sub.equals("Social Studies") || sub.equals("social studies")){
+            mFireStore.collection("SocialStudiesTutors").add(userMap).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                @Override
+                public void onSuccess(DocumentReference documentReference) {
+                    // Toast.makeText(studentRegistration.this, "Username added to Firestore", Toast.LENGTH_SHORT).show();
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    // Toast.makeText(studentRegistration.this, "Username NOT ADDED", Toast.LENGTH_SHORT).show();
+
+                }
+            });
+        }
+
+    else { // if the person doesn't fall under a specific subject
+
+            mFireStore.collection("SyzygyTutors").add(userMap).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                @Override
+                public void onSuccess(DocumentReference documentReference) {
+                    // Toast.makeText(studentRegistration.this, "Username added to Firestore", Toast.LENGTH_SHORT).show();
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    // Toast.makeText(studentRegistration.this, "Username NOT ADDED", Toast.LENGTH_SHORT).show();
+
+                }
+            });
+
+        }
 
 
         if (em.isEmpty() || p.isEmpty()) {

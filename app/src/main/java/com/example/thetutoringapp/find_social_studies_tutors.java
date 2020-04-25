@@ -19,21 +19,21 @@ import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 
-public class find_tutor extends AppCompatActivity {
+public class find_social_studies_tutors extends AppCompatActivity {
     private FirebaseFirestore firebaseFirestore;
     private RecyclerView mFirestoreList;
-    private  FirestoreRecyclerAdapter adapter;
+    private FirestoreRecyclerAdapter adapter;
     private EditText subject;
     String search = "";
     Query query;
     Button button;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_find_tutor);
+        setContentView(R.layout.activity_find_social_studies_tutors);
 
+        // start here
         subject = findViewById(R.id.editText10);
 
         firebaseFirestore = FirebaseFirestore.getInstance();
@@ -44,28 +44,27 @@ public class find_tutor extends AppCompatActivity {
 
         // find all the subject tutored
 
-        query = firebaseFirestore.collection("SyzygyTutors");
+        query = firebaseFirestore.collection("SocialStudiesTutors");
 
         FirestoreRecyclerOptions<TutorModel> options = new FirestoreRecyclerOptions.Builder<TutorModel>()
                 .setQuery(query, TutorModel.class)
                 .build();
 
-        adapter = new FirestoreRecyclerAdapter<TutorModel, TutorViewHolder>(options) {
+        adapter = new FirestoreRecyclerAdapter<TutorModel, find_tutor.TutorViewHolder>(options) {
             @NonNull
             @Override
-            public TutorViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+            public find_tutor.TutorViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
                 View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_single, parent, false);
-                return new TutorViewHolder(view);
+                return new find_tutor.TutorViewHolder(view);
 
             }
 
             @Override
-            protected void onBindViewHolder(@NonNull TutorViewHolder tutorViewHolder, int i, @NonNull TutorModel tutorModel) {
+            protected void onBindViewHolder(@NonNull find_tutor.TutorViewHolder tutorViewHolder, int i, @NonNull TutorModel tutorModel) {
                 tutorViewHolder.list_first.setText(tutorModel.getFirst());
                 tutorViewHolder.list_last.setText(tutorModel.getEmail());
                 tutorViewHolder.list_subject.setText(tutorModel.getSubject());
             }
-
 
 
         };
@@ -75,17 +74,12 @@ public class find_tutor extends AppCompatActivity {
         mFirestoreList.setAdapter(adapter);
 
 
-        // This is the recycler view stuff below
-        // query
 
 
-        // view holder
     }
 
 
-    public void find(View view) {
-       //query =  firebaseFirestore.collection("SyzygyTutors");
-
+    public void findSocialStudiesTutors(View view) {
         if(subject.getText().toString().equals("math") || subject.getText().toString().equals("Math") || subject.getText().toString().equals("MTH") || subject.getText().toString().equals("mth")) {
             Intent i = new Intent(this, find_math_tutors.class);
             startActivity(i);
@@ -109,33 +103,28 @@ public class find_tutor extends AppCompatActivity {
             Intent i = new Intent(this, find_tutor.class);
             startActivity(i);
         }
+    }
+
+    private class TutorViewHolder extends RecyclerView.ViewHolder {
+
+        private TextView list_first;
+        private TextView list_last;
+        public TextView list_subject;
 
 
+        public TutorViewHolder(@NonNull View itemView) {
+            super(itemView);
+
+            list_first = itemView.findViewById(R.id.list_first);
+            list_last = itemView.findViewById(R.id.list_last);
+            list_subject = itemView.findViewById(R.id.list_subject);
+        }
 
 
     }
 
-        public static class TutorViewHolder extends RecyclerView.ViewHolder {
-
-            public TextView list_first;
-            public TextView list_last;
-            public TextView list_subject;
-
-
-            public TutorViewHolder(@NonNull View itemView) {
-                super(itemView);
-
-                list_first = itemView.findViewById(R.id.list_first);
-                list_last = itemView.findViewById(R.id.list_last);
-                list_subject = itemView.findViewById(R.id.list_subject);
-
-            }
-
-
-        }
-
     @Override
-    protected void onStop(){
+    protected void onStop() {
         super.onStop();
         adapter.stopListening();
     }
@@ -146,4 +135,5 @@ public class find_tutor extends AppCompatActivity {
         super.onStart();
         adapter.startListening();
     }
+
 }

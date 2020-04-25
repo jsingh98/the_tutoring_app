@@ -55,7 +55,6 @@ public class MainActivity extends AppCompatActivity {
 
 
         mAuth = FirebaseAuth.getInstance();
-
         email = findViewById(R.id.editText4);
         pass = findViewById(R.id.editText5);
         login = findViewById(R.id.button);
@@ -67,24 +66,22 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void log(View view) {
-
-
-
+        // variables for login, log is the email and p is the password
         final String log, p;
-
         log = email.getText().toString();
-
         p = pass.getText().toString();
 
-
+        // if the email or the password are empty, display fields are empty
     if(log.isEmpty() || p.isEmpty() ){
         Toast.makeText(MainActivity.this, "Fields are empty", Toast.LENGTH_SHORT).show();
 
     }
 else {
+    // try signing in with firestore using the log and p variables
         mAuth.signInWithEmailAndPassword(log, p).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
+                // if the email and password exist in firebase, do the following
                 if (task.isSuccessful()) {
 
                     // read in email, and search for role
@@ -103,7 +100,7 @@ else {
                                         Intent i = new Intent(getApplicationContext(), studentDashboard.class);
                                         startActivity(i);
                                     }
-
+                                    // technically, don't need this check because it is checking the student collection, delete later after testing
                                     if(role.equals("tutor")){
                                         Intent i = new Intent(getApplicationContext(), tutor_dashboard.class);
                                         startActivity(i);
@@ -145,24 +142,17 @@ else {
                     });
 
 
-
-                    // make intent to go to tutor or student page
-//                    Intent i = new Intent(getApplicationContext(), studentDashboard.class);
-//                    startActivity(i);
-
                     Toast.makeText(MainActivity.this, "Login with firebase successful", Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(MainActivity.this, "Login with firebase failed", Toast.LENGTH_SHORT).show();
-//                    Intent i = new Intent(getApplicationContext(), studentDashboard.class);
-//                    startActivity(i);
                 }
             }
         });
 
     }
         // use the next two lines to skip auth, for testing purposes only
-//        Intent i = new Intent(getApplicationContext(), studentDashboard.class);
-//        startActivity(i);
+        Intent i = new Intent(getApplicationContext(), studentDashboard.class);
+        startActivity(i);
     }
 
 
@@ -174,11 +164,7 @@ else {
     public void register(View view) {
 
         d = new Dialog(this);
-        // grade1 = (EditText) findViewById()
         d.setContentView(R.layout.student_or_tutor_dialog);
-       // data = d.findViewById(R.id.textView2);
-        // showing the dialog
-
         d.show();
     }
 

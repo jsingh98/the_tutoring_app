@@ -3,13 +3,15 @@ package com.example.thetutoringapp;
 public class TutorModel {
 
     private String first;
-    private String last;
+    private String email;
+    private String subject;
 
     private TutorModel(){}
 
-    private TutorModel(String first, String last){
+    private TutorModel(String first, String last, String subject){
         this.first = first;
-        this.last = last;
+        this.email = last;
+        this.subject = subject;
     }
 
     public String getFirst() {
@@ -20,11 +22,19 @@ public class TutorModel {
         this.first = first;
     }
 
-    public String getLast() {
-        return last;
+    public String getEmail() {
+        return email;
     }
 
-    public void setLast(String last) {
-        this.last = last;
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getSubject() {
+        return subject;
+    }
+
+    public void setSubject(String subject) {
+        this.subject = subject;
     }
 }

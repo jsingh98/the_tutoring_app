@@ -46,5 +46,9 @@
     <string name="changeColor">What Color would you like your dashboard to be?</string>
     <string name="confirmDelete">Are you sure that you want to delete your account?</string>
 
+    <string name="requestFriend">Send Request</string>
+
+    <string name="findTutors">Find Tutors</string>
+
 
 </resources>
