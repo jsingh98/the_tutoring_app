@@ -23,4 +23,9 @@ public class tutor_dashboard extends AppCompatActivity {
 //       Intent i = new Intent(this, student_messages.class);
 //        startActivity(i);
     }
+
+    public void viewRequests(View view) {
+        Intent i = new Intent(this, view_requests.class);
+        startActivity(i);
+    }
 }

@@ -84,6 +84,12 @@ else {
                 // if the email and password exist in firebase, do the following
                 if (task.isSuccessful()) {
 
+                    // in order to get the email of the current user, use this
+                    //mAuth.getCurrentUser().getEmail();
+
+                   // Toast.makeText(MainActivity.this, mAuth.getCurrentUser().getEmail(), Toast.LENGTH_SHORT).show();
+
+
                     // read in email, and search for role
                     // depending on role, bring to respective dashboard
 
@@ -151,8 +157,8 @@ else {
 
     }
         // use the next two lines to skip auth, for testing purposes only
-        Intent i = new Intent(getApplicationContext(), studentDashboard.class);
-        startActivity(i);
+//        Intent i = new Intent(getApplicationContext(), studentDashboard.class);
+//        startActivity(i);
     }
 
 

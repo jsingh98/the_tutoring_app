@@ -50,5 +50,7 @@
 
     <string name="findTutors">Find Tutors</string>
 
+    <string name="accept">Accept</string>
+    <string name="decline">Decline</string>
 
 </resources>

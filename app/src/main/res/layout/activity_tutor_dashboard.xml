@@ -25,6 +25,7 @@
         android:layout_width="190dp"
         android:layout_height="190dp"
         android:background="#a9fbfc"
+        android:onClick="viewRequests"
         android:text="@string/request"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

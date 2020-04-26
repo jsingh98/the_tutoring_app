@@ -7,15 +7,24 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
+
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.io.File;
 
 public class studentDashboard extends AppCompatActivity {
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student_dashboard);
+        mAuth = FirebaseAuth.getInstance();
+
+//        Toast.makeText(studentDashboard.this, mAuth.getCurrentUser().getEmail(), Toast.LENGTH_SHORT).show();
+
+
     }
 
     public void takePicture(View view) {
