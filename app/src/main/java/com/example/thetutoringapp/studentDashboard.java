@@ -52,7 +52,7 @@ public class studentDashboard extends AppCompatActivity {
     }
 
     public void messages(View view) {
-        Intent i = new Intent(this, student_messages.class);
+        Intent i = new Intent(this, student_messaging_list.class);
         startActivity(i);
     }
 }

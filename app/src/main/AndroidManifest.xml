@@ -9,7 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".view_requests"></activity>
+        <activity android:name=".tutor_messaging_list"></activity>
+        <activity android:name=".chat" />
+        <activity android:name=".student_messaging_list" />
+        <activity android:name=".view_requests" />
         <activity android:name=".find_science_tutors" />
         <activity android:name=".find_social_studies_tutors" />
         <activity android:name=".find_english_tutors" />
@@ -18,7 +21,6 @@
         <activity android:name=".changeColor" />
         <activity android:name=".changeName" />
         <activity android:name=".reportTutor" />
-        <activity android:name=".student_messages" />
         <activity android:name=".t_settings" />
         <activity android:name=".s_settings" />
         <activity android:name=".find_tutor" />

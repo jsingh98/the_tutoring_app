@@ -154,15 +154,7 @@ public class find_tutor extends AppCompatActivity {
                     public void onClick(View view) {
 
                         int position = getAdapterPosition();
-                        // getting the email of the student
-                        //Toast.makeText(TutorViewHolder.super.itemView.getContext(), mAuth.getCurrentUser().getEmail(), Toast.LENGTH_SHORT).show();
-                        // getting the email of the tutor
-                       // Toast.makeText(TutorViewHolder.super.itemView.getContext(), "Sent request to: "  + list_last.getText(), Toast.LENGTH_SHORT ).show();
 
-                        // need to upload document to Requests collection in firebase firestore
-                        // fields are status, studentEmail, tutorEmail
-
-                        // following TVAC tutorial
                         Map<String,String> userMap = new HashMap<>();
 
 
@@ -183,7 +175,7 @@ public class find_tutor extends AppCompatActivity {
                             }).addOnFailureListener(new OnFailureListener() {
                                 @Override
                                 public void onFailure(@NonNull Exception e) {
-                                    Toast.makeText(TutorViewHolder.super.itemView.getContext(), "Cannot send request", Toast.LENGTH_SHORT).show();
+                                  //  Toast.makeText(TutorViewHolder.super.itemView.getContext(), "Cannot send request", Toast.LENGTH_SHORT).show();
 
                                 }
                             }); // end of on failur

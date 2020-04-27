@@ -20,8 +20,8 @@ public class tutor_dashboard extends AppCompatActivity {
     }
 
     public void messages(View view) {
-//       Intent i = new Intent(this, student_messages.class);
-//        startActivity(i);
+       Intent i = new Intent(this, tutor_messaging_list.class);
+        startActivity(i);
     }
 
     public void viewRequests(View view) {

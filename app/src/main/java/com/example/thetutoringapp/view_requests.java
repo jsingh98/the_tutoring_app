@@ -59,7 +59,7 @@ public class view_requests extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
 
         tutor = mAuth.getCurrentUser().getEmail();
-        Toast.makeText(this, tutor, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, tutor, Toast.LENGTH_SHORT).show();
 
 
         // make query , then on complete, make the "query" variable

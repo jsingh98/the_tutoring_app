@@ -13,11 +13,19 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class find_math_tutors extends AppCompatActivity {
 
@@ -115,12 +123,57 @@ public class find_math_tutors extends AppCompatActivity {
         private TextView list_last;
         public TextView list_subject;
 
+        private FirebaseAuth mAuth;
+        FirebaseFirestore mFireStore;
+        boolean sentRequest = false;
+        public Button list_button;
+
         public TutorViewHolder(@NonNull View itemView) {
             super(itemView);
 
             list_first = itemView.findViewById(R.id.list_first);
             list_last = itemView.findViewById(R.id.list_last);
             list_subject = itemView.findViewById(R.id.list_subject);
+
+            list_button = itemView.findViewById(R.id.list_accept);
+            mAuth = FirebaseAuth.getInstance();
+            mFireStore = FirebaseFirestore.getInstance();
+            list_button.setOnClickListener(new View.OnClickListener(){
+
+                @Override
+                public void onClick(View view) {
+
+                    int position = getAdapterPosition();
+
+                    Map<String,String> userMap = new HashMap<>();
+
+
+
+                    userMap.put("status", "pending");
+                    userMap.put("studentEmail",mAuth.getCurrentUser().getEmail());
+                    userMap.put("tutorEmail",list_last.getText().toString());
+                    // Toast.makeText(TutorViewHolder.super.itemView.getContext(), mAuth.getCurrentUser().getEmail() + " sent a request to: " + list_last.getText().toString(), Toast.LENGTH_SHORT ).show();
+
+                    if(sentRequest == false) {
+                        mFireStore.collection("Requests").add(userMap).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                            @Override
+                            public void onSuccess(DocumentReference documentReference) {
+                                Toast.makeText(find_math_tutors.TutorViewHolder.super.itemView.getContext(), mAuth.getCurrentUser().getEmail() + " sent a request to: " + list_last.getText().toString(), Toast.LENGTH_SHORT).show();
+                                sentRequest = true;
+
+                            } // end of success
+                        }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Toast.makeText(find_math_tutors.TutorViewHolder.super.itemView.getContext(), "Cannot send request", Toast.LENGTH_SHORT).show();
+
+                            }
+                        }); // end of on failur
+                    } // end of send request == false
+                } // end of on click
+            });
+
+
         }
 
 

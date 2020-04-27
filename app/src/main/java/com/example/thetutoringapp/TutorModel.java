@@ -8,9 +8,9 @@ public class TutorModel {
 
     private TutorModel(){}
 
-    private TutorModel(String first, String last, String subject){
+    private TutorModel(String first, String email, String subject){
         this.first = first;
-        this.email = last;
+        this.email = email;
         this.subject = subject;
     }
 
