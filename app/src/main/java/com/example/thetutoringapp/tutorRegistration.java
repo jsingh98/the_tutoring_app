@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -163,25 +164,38 @@ public class tutorRegistration extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
-                                // Sign in success, update UI with the signed-in user's information
-                                //Log.d(TAG, "createUserWithEmail:success");
                                 FirebaseUser user = mAuth.getCurrentUser();
-                                //updateUI(user);
+
+                                if (first.length() >= 2 && first.length() < 30 && last.length() >= 2 && last.length() < 30
+                                        && Patterns.EMAIL_ADDRESS.matcher(email.getText().toString()).matches()
+                                        && pass.length() >= 3 && pass.length() < 30
+                                        && phone.length() >= 3 && phone.length() < 30
+                                        && education.length() >= 3 && education.length() < 30
+                                        && subject.length() >= 3 && subject.length() < 30) {
+
+                                    Intent i = new Intent(getApplicationContext(), MainActivity.class);
+                                    startActivity(i);
+
+                                } else {
+
+                                    Toast.makeText(tutorRegistration.this, "Fields are invalid",
+                                            Toast.LENGTH_SHORT).show();
+
+                                }
+
                             } else {
-                                // If sign in fails, display a message to the user.
-                                // Log.w(TAG, "createUserWithEmail:failure", task.getException());
-                                Toast.makeText(tutorRegistration.this, "Authentication failed.",
+
+                                Toast.makeText(tutorRegistration.this, "User already exists",
                                         Toast.LENGTH_SHORT).show();
-                                //  updateUI(null);
+
                             }
 
-                            // ...
+
                         }
                     });
 
 
-            Intent i = new Intent(this, MainActivity.class);
-            startActivity(i);
+
         }
     }
 

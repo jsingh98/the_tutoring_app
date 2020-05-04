@@ -8,21 +8,6 @@
     tools:context=".s_settings">
 
     <Button
-        android:id="@+id/button10"
-        android:layout_width="210dp"
-        android:layout_height="110dp"
-        android:layout_marginBottom="344dp"
-        android:background="#a9fbfc"
-        android:onClick="changeName"
-        android:text="@string/user"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.462"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button11"
-        app:layout_constraintVertical_bias="0.384" />
-
-    <Button
         android:id="@+id/button11"
         android:layout_width="210dp"
         android:layout_height="110dp"
@@ -31,37 +16,39 @@
         android:text="@string/report"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.462"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.025" />
+        app:layout_constraintVertical_bias="0.133" />
 
     <Button
         android:id="@+id/button13"
         android:layout_width="210dp"
         android:layout_height="110dp"
+        android:layout_marginBottom="68dp"
         android:background="#a9fbfc"
         android:onClick="deleteAccount"
         android:text="@string/delete"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.462"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button9"
-        app:layout_constraintVertical_bias="0.333" />
+        app:layout_constraintTop_toBottomOf="@+id/button17"
+        app:layout_constraintVertical_bias="0.648" />
 
     <Button
-        android:id="@+id/button9"
+        android:id="@+id/button17"
         android:layout_width="210dp"
         android:layout_height="110dp"
-        android:layout_marginBottom="236dp"
         android:background="#a9fbfc"
-        android:onClick="chooseColor"
-        android:text="@string/color"
+        android:onClick="logOut"
+        android:text="@string/logout"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.462"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button10"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toBottomOf="@+id/button11"
+        app:layout_constraintVertical_bias="0.165"
+        tools:text="@string/logout" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -8,8 +8,8 @@
 
     <TextView
         android:id="@+id/list_tutor"
-        android:layout_width="154dp"
-        android:layout_height="21dp"
+        android:layout_width="236dp"
+        android:layout_height="26dp"
         android:text="TextView"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

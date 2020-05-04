@@ -53,6 +53,8 @@
     <string name="accept">Accept</string>
     <string name="decline">Decline</string>
 
+    <string name="logout">Log Out</string>
+
     <string name="sendMessage">Send Message</string>
 
 

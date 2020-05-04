@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -109,26 +110,40 @@ public class studentRegistration extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
-                                // Sign in success, update UI with the signed-in user's information
-                                //Log.d(TAG, "createUserWithEmail:success");
+
                                 FirebaseUser user = mAuth.getCurrentUser();
-                                //updateUI(user);
-                            } else {
-                                // If sign in fails, display a message to the user.
-                                // Log.w(TAG, "createUserWithEmail:failure", task.getException());
-                                Toast.makeText(studentRegistration.this, "Authentication failed.",
-                                        Toast.LENGTH_SHORT).show();
-                                //  updateUI(null);
+
+                                if (first.length() >= 2 && first.length() < 30 && last.length() >= 2 && last.length() < 30
+                                        && Patterns.EMAIL_ADDRESS.matcher(email.getText().toString()).matches()
+                                        && pass.length() >= 3 && pass.length() < 30
+                                        && phone.length() >= 3 && phone.length() < 30
+                                        && education.length() >= 3 && education.length() < 30) {
+
+                                    Intent i = new Intent(getApplicationContext(), MainActivity.class);
+                                    startActivity(i);
+
+                                } else {
+
+                                    Toast.makeText(studentRegistration.this, "Fields are invalid",
+                                            Toast.LENGTH_SHORT).show();
+
+                                }
+
+
                             }
 
-                            // ...
+                            else {
+
+                                Toast.makeText(studentRegistration.this, "User already exists",
+                                        Toast.LENGTH_SHORT).show();
+
+                            }
                         }
                     });
 
 
 
-            Intent i = new Intent(this, MainActivity.class);
-            startActivity(i);
+
         }
     }
 }

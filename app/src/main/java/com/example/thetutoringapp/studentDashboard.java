@@ -30,14 +30,11 @@ public class studentDashboard extends AppCompatActivity {
     public void takePicture(View view) {
 
 
-//        Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
-//        sharingIntent.setType("text/plain");
-//        String shareBody = "Send a picture of your problem";
-//        sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Subject Here");
-//        sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
-//        startActivity(Intent.createChooser(sharingIntent, "Share via"));
-            Intent i = new Intent(this, picture.class);
-            startActivity(i);
+        FirebaseAuth.getInstance().signOut();
+        Intent i = new Intent(this, MainActivity.class);
+        startActivity(i);
+        Toast.makeText(this, "You have been signed out", Toast.LENGTH_SHORT).show();
+
 
     }
 
