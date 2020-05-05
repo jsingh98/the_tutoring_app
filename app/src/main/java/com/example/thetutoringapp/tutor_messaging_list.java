@@ -62,6 +62,7 @@ public class tutor_messaging_list extends AppCompatActivity {
             @Override
             protected void onBindViewHolder(@NonNull TutorViewHolders tutorViewHolders, int i, @NonNull StudentModel studentModel) {
                 tutorViewHolders.list_first.setText(studentModel.getStudentEmail());
+                tutorViewHolders.list_subject.setText("");
 
             }
 
@@ -103,6 +104,7 @@ public class tutor_messaging_list extends AppCompatActivity {
 
             list_first = itemView.findViewById(R.id.list_tutor);
             list_button = itemView.findViewById(R.id.list_send_tutor_message);
+            list_subject = itemView.findViewById(R.id.list_subject);
 
             mAuth = FirebaseAuth.getInstance();
             mFireStore = FirebaseFirestore.getInstance();

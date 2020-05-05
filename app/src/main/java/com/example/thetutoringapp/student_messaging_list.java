@@ -39,6 +39,7 @@ public class student_messaging_list extends AppCompatActivity {
     private FirestoreRecyclerAdapter adapter;
     private FirebaseAuth mAuth;
     private EditText subject;
+    private FirebaseFirestore subjectFirestore;
     String search = "";
     Query query;
     String tutor;
@@ -51,6 +52,8 @@ public class student_messaging_list extends AppCompatActivity {
         // subject = findViewById(R.id.editText10);
         firebaseFirestore = FirebaseFirestore.getInstance();
         mFirestoreList = findViewById(R.id.message_list);
+
+        subjectFirestore = FirebaseFirestore.getInstance();
 
         // this is used to find the current email
         mAuth = FirebaseAuth.getInstance();
@@ -78,6 +81,8 @@ public class student_messaging_list extends AppCompatActivity {
             @Override
             protected void onBindViewHolder(@NonNull student_messaging_list.TutorViewHolders tutorViewHolders, int i, @NonNull TutorMessageModel tutorMessageModel) {
                 tutorViewHolders.list_first.setText(tutorMessageModel.getTutorEmail());
+                tutorViewHolders.list_subject.setText("subject: " + tutorMessageModel.getSubject());
+
 
             }
 
@@ -90,6 +95,9 @@ public class student_messaging_list extends AppCompatActivity {
         mFirestoreList.setAdapter(adapter);
 
 
+
+
+
     }
 
 
@@ -97,7 +105,7 @@ public class student_messaging_list extends AppCompatActivity {
     public class TutorViewHolders extends RecyclerView.ViewHolder {
 
         public TextView list_first;
-        public TextView list_last;
+
         public TextView list_subject;
        public Button list_button;
         private FirebaseAuth mAuth;
@@ -109,6 +117,7 @@ public class student_messaging_list extends AppCompatActivity {
 
             list_first = itemView.findViewById(R.id.list_tutor);
             list_button = itemView.findViewById(R.id.list_send_tutor_message);
+            list_subject = itemView.findViewById(R.id.list_subject);
 
             mAuth = FirebaseAuth.getInstance();
             mFireStore = FirebaseFirestore.getInstance();

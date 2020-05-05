@@ -75,7 +75,9 @@ public class find_tutor extends AppCompatActivity {
             protected void onBindViewHolder(@NonNull TutorViewHolder tutorViewHolder, int i, @NonNull TutorModel tutorModel) {
                 tutorViewHolder.list_first.setText(tutorModel.getFirst());
                 tutorViewHolder.list_last.setText(tutorModel.getEmail());
-                tutorViewHolder.list_subject.setText(tutorModel.getSubject());
+                tutorViewHolder.list_subject.setText( "Subject: " + tutorModel.getSubject());
+                tutorViewHolder.list_price.setText("Price: $" + (tutorModel.getPrice()) + " per hour");
+
             }
 
 
@@ -131,6 +133,7 @@ public class find_tutor extends AppCompatActivity {
 
             public TextView list_first;
             public TextView list_last;
+            public TextView list_price;
             public TextView list_subject;
             public Button list_button;
             private FirebaseAuth mAuth;
@@ -144,6 +147,7 @@ public class find_tutor extends AppCompatActivity {
                 list_last = itemView.findViewById(R.id.list_last);
                 list_subject = itemView.findViewById(R.id.list_subject);
                 list_button = itemView.findViewById(R.id.list_accept);
+                list_price = itemView.findViewById(R.id.list_pay);
                 mAuth = FirebaseAuth.getInstance();
                 mFireStore = FirebaseFirestore.getInstance();
 
@@ -162,6 +166,7 @@ public class find_tutor extends AppCompatActivity {
                         userMap.put("status", "pending");
                         userMap.put("studentEmail",mAuth.getCurrentUser().getEmail());
                         userMap.put("tutorEmail",list_last.getText().toString());
+                        userMap.put("subject", list_subject.getText().toString());
                        // Toast.makeText(TutorViewHolder.super.itemView.getContext(), mAuth.getCurrentUser().getEmail() + " sent a request to: " + list_last.getText().toString(), Toast.LENGTH_SHORT ).show();
 
                         if(sentRequest == false) {

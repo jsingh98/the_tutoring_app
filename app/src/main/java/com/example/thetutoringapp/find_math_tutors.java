@@ -73,6 +73,7 @@ public class find_math_tutors extends AppCompatActivity {
             protected void onBindViewHolder(@NonNull find_tutor.TutorViewHolder tutorViewHolder, int i, @NonNull TutorModel tutorModel) {
                 tutorViewHolder.list_first.setText(tutorModel.getFirst());
                 tutorViewHolder.list_last.setText(tutorModel.getEmail());
+                tutorViewHolder.list_price.setText("Price: $" + (tutorModel.getPrice()) + " per hour");
                 tutorViewHolder.list_subject.setText(tutorModel.getSubject());
             }
 
@@ -122,6 +123,7 @@ public class find_math_tutors extends AppCompatActivity {
         private TextView list_first;
         private TextView list_last;
         public TextView list_subject;
+        public TextView list_price;
 
         private FirebaseAuth mAuth;
         FirebaseFirestore mFireStore;
@@ -130,10 +132,11 @@ public class find_math_tutors extends AppCompatActivity {
 
         public TutorViewHolder(@NonNull View itemView) {
             super(itemView);
-
+            list_price = itemView.findViewById(R.id.list_pay);
             list_first = itemView.findViewById(R.id.list_first);
             list_last = itemView.findViewById(R.id.list_last);
             list_subject = itemView.findViewById(R.id.list_subject);
+
 
             list_button = itemView.findViewById(R.id.list_accept);
             mAuth = FirebaseAuth.getInstance();
@@ -152,6 +155,7 @@ public class find_math_tutors extends AppCompatActivity {
                     userMap.put("status", "pending");
                     userMap.put("studentEmail",mAuth.getCurrentUser().getEmail());
                     userMap.put("tutorEmail",list_last.getText().toString());
+                    userMap.put("subject", list_subject.getText().toString());
                     // Toast.makeText(TutorViewHolder.super.itemView.getContext(), mAuth.getCurrentUser().getEmail() + " sent a request to: " + list_last.getText().toString(), Toast.LENGTH_SHORT ).show();
 
                     if(sentRequest == false) {

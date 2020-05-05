@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -88,6 +89,8 @@ public class view_requests extends AppCompatActivity {
             protected void onBindViewHolder(@NonNull view_requests.StudentViewHolder studentViewHolder, int i, @NonNull StudentModel studentModel) {
                 studentViewHolder.list_first.setText(studentModel.getStudentEmail());
 
+
+
             }
 
 
@@ -105,7 +108,7 @@ public class view_requests extends AppCompatActivity {
 
 
 
-    public static class StudentViewHolder extends RecyclerView.ViewHolder {
+    public class StudentViewHolder extends RecyclerView.ViewHolder {
 
         public TextView list_first;
         public Button list_button;
@@ -125,13 +128,24 @@ public class view_requests extends AppCompatActivity {
             mAuth = FirebaseAuth.getInstance();
             mFireStore = FirebaseFirestore.getInstance();
 
+
+            // Storing data into SharedPreferences
+            SharedPreferences sharedPreferences = getSharedPreferences("MySharedPref", MODE_PRIVATE);
+            SharedPreferences.Editor myEdit = sharedPreferences.edit();
+            myEdit.putString("studentEmail", list_first.getText().toString());
+            myEdit.commit();
+
+            SharedPreferences sh = getSharedPreferences("MySharedPref", 0);
+            final String s1 = sh.getString("studentEmail", "");
+
+
             // what happens if you click on ACCEPT STUDENTS button
             list_button.setOnClickListener(new View.OnClickListener(){
 
                 @Override
                 public void onClick(View view) {
 
-                    mFireStore.collection("Requests").whereEqualTo("tutorEmail",mAuth.getCurrentUser().getEmail()).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    mFireStore.collection("Requests").whereEqualTo("tutorEmail",mAuth.getCurrentUser().getEmail()).whereEqualTo("studentEmail",list_first.getText().toString()).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                 @Override
                 public void onComplete(@NonNull Task<QuerySnapshot> task) {
                     if (task.isSuccessful()) {
@@ -162,7 +176,7 @@ public class view_requests extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
 
-                    mFireStore.collection("Requests").whereEqualTo("tutorEmail",mAuth.getCurrentUser().getEmail()).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    mFireStore.collection("Requests").whereEqualTo("tutorEmail",mAuth.getCurrentUser().getEmail()).whereEqualTo("studentEmail",list_first.getText().toString()).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                         @Override
                         public void onComplete(@NonNull Task<QuerySnapshot> task) {
                             if (task.isSuccessful()) {

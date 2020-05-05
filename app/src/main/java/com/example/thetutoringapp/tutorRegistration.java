@@ -76,7 +76,7 @@ public class tutorRegistration extends AppCompatActivity {
         userMap.put("education", e);
         userMap.put("password", p);
         userMap.put("email", em);
-        userMap.put("phone", ph);
+        userMap.put("price", ph);
         userMap.put("subject", sub);
         userMap.put("role", "tutor");
 
@@ -137,7 +137,7 @@ public class tutorRegistration extends AppCompatActivity {
             });
         }
 
-    else { // if the person doesn't fall under a specific subject
+    // if the person doesn't fall under a specific subject
 
             mFireStore.collection("SyzygyTutors").add(userMap).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                 @Override
@@ -152,7 +152,7 @@ public class tutorRegistration extends AppCompatActivity {
                 }
             });
 
-        }
+        
 
 
         if (em.isEmpty() || p.isEmpty()) {
@@ -169,11 +169,10 @@ public class tutorRegistration extends AppCompatActivity {
                                 if (first.length() >= 2 && first.length() < 30 && last.length() >= 2 && last.length() < 30
                                         && Patterns.EMAIL_ADDRESS.matcher(email.getText().toString()).matches()
                                         && pass.length() >= 3 && pass.length() < 30
-                                        && phone.length() >= 3 && phone.length() < 30
                                         && education.length() >= 3 && education.length() < 30
                                         && subject.length() >= 3 && subject.length() < 30) {
 
-                                    Intent i = new Intent(getApplicationContext(), MainActivity.class);
+                                    Intent i = new Intent(tutorRegistration.this, MainActivity.class);
                                     startActivity(i);
 
                                 } else {

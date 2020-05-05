@@ -52,6 +52,7 @@
 
     <string name="accept">Accept</string>
     <string name="decline">Decline</string>
+    <string name="payrate">Enter your hourly rate</string>
 
     <string name="logout">Log Out</string>
 
