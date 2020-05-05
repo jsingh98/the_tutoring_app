@@ -78,6 +78,19 @@ public class find_tutor extends AppCompatActivity {
                 tutorViewHolder.list_subject.setText( "Subject: " + tutorModel.getSubject());
                 tutorViewHolder.list_price.setText("Price: $" + (tutorModel.getPrice()) + " per hour");
 
+               if( Integer.parseInt(tutorModel.getTotal()) == 0){
+                   //Toast.makeText(getApplicationContext(), "hi", Toast.LENGTH_SHORT).show();
+                   tutorViewHolder.list_rating.setText("Rating: " + tutorModel.getTotal());
+
+                  // Toast.makeText(TutorViewHolder.super.itemView.getContext(), mAuth.getCurrentUser().getEmail() + " sent a request to: " + list_last.getText().toString(), Toast.LENGTH_SHORT).show();
+
+               }
+               else {
+                   int average = Integer.parseInt(tutorModel.getTotal()) / Integer.parseInt(tutorModel.getNum());
+                   tutorViewHolder.list_rating.setText("Rating:" + average);
+               }
+                tutorViewHolder.list_num.setText("Number of Ratings: " + (tutorModel.getNum()));
+
             }
 
 
@@ -135,6 +148,10 @@ public class find_tutor extends AppCompatActivity {
             public TextView list_last;
             public TextView list_price;
             public TextView list_subject;
+
+            public TextView list_num;
+            public TextView list_rating;
+
             public Button list_button;
             private FirebaseAuth mAuth;
             FirebaseFirestore mFireStore;
@@ -146,6 +163,10 @@ public class find_tutor extends AppCompatActivity {
                 list_first = itemView.findViewById(R.id.list_first);
                 list_last = itemView.findViewById(R.id.list_last);
                 list_subject = itemView.findViewById(R.id.list_subject);
+
+                list_rating = itemView.findViewById(R.id.list_rating);
+                list_num = itemView.findViewById(R.id.list_num);
+
                 list_button = itemView.findViewById(R.id.list_accept);
                 list_price = itemView.findViewById(R.id.list_pay);
                 mAuth = FirebaseAuth.getInstance();

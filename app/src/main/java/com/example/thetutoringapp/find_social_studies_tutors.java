@@ -73,6 +73,19 @@ public class find_social_studies_tutors extends AppCompatActivity {
                 tutorViewHolder.list_last.setText(tutorModel.getEmail());
                 tutorViewHolder.list_subject.setText(tutorModel.getSubject());
                 tutorViewHolder.list_price.setText("Price: $" + (tutorModel.getPrice()) + " per hour");
+                if( Integer.parseInt(tutorModel.getTotal()) == 0){
+                    //Toast.makeText(getApplicationContext(), "hi", Toast.LENGTH_SHORT).show();
+                    tutorViewHolder.list_rating.setText("Rating: " + tutorModel.getTotal());
+
+                    // Toast.makeText(TutorViewHolder.super.itemView.getContext(), mAuth.getCurrentUser().getEmail() + " sent a request to: " + list_last.getText().toString(), Toast.LENGTH_SHORT).show();
+
+                }
+                else {
+                    int average = Integer.parseInt(tutorModel.getTotal()) / Integer.parseInt(tutorModel.getNum());
+                    tutorViewHolder.list_rating.setText("Rating:" + average);
+                }
+                tutorViewHolder.list_num.setText("Number of Ratings: " + (tutorModel.getNum()));
+
             }
 
 
@@ -121,6 +134,9 @@ public class find_social_studies_tutors extends AppCompatActivity {
         public TextView list_subject;
         public TextView list_price;
 
+        public TextView list_num;
+        public TextView list_rating;
+
         private FirebaseAuth mAuth;
         FirebaseFirestore mFireStore;
         boolean sentRequest = false;
@@ -134,6 +150,8 @@ public class find_social_studies_tutors extends AppCompatActivity {
             list_subject = itemView.findViewById(R.id.list_subject);
             list_price = itemView.findViewById(R.id.list_pay);
 
+            list_rating = itemView.findViewById(R.id.list_rating);
+            list_num = itemView.findViewById(R.id.list_num);
 
             list_button = itemView.findViewById(R.id.list_accept);
             mAuth = FirebaseAuth.getInstance();

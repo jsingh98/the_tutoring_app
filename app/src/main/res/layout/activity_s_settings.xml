@@ -13,7 +13,7 @@
         android:layout_height="110dp"
         android:background="#a9fbfc"
         android:onClick="report"
-        android:text="@string/report"
+        android:text="@string/rate"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"

@@ -79,6 +79,8 @@ public class tutorRegistration extends AppCompatActivity {
         userMap.put("price", ph);
         userMap.put("subject", sub);
         userMap.put("role", "tutor");
+        userMap.put("num", "0");
+        userMap.put("total", "0");
 
         if(sub.equals("Math") || sub.equals("math")){
             mFireStore.collection("MathTutors").add(userMap).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
@@ -152,7 +154,7 @@ public class tutorRegistration extends AppCompatActivity {
                 }
             });
 
-        
+
 
 
         if (em.isEmpty() || p.isEmpty()) {
