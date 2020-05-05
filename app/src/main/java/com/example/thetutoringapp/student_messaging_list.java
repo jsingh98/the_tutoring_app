@@ -81,7 +81,7 @@ public class student_messaging_list extends AppCompatActivity {
             @Override
             protected void onBindViewHolder(@NonNull student_messaging_list.TutorViewHolders tutorViewHolders, int i, @NonNull TutorMessageModel tutorMessageModel) {
                 tutorViewHolders.list_first.setText(tutorMessageModel.getTutorEmail());
-                tutorViewHolders.list_subject.setText("subject: " + tutorMessageModel.getSubject());
+                tutorViewHolders.list_subject.setText(tutorMessageModel.getSubject());
 
 
             }
