@@ -67,8 +67,7 @@ public class reportTutor extends AppCompatActivity {
                             String t = Integer.toString(total);
                             String n = Integer.toString(num);
 
-                            Toast.makeText(getApplicationContext(), "The total score is " + total
-                                            + " and the number of reviews is: " + num
+                            Toast.makeText(getApplicationContext(), "Review sent"
                                     , Toast.LENGTH_SHORT).show();
 
                             db.collection("SyzygyTutors")

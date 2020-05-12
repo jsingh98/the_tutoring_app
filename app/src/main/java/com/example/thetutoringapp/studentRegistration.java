@@ -133,11 +133,11 @@ public class studentRegistration extends AppCompatActivity {
                             }
 
                             else {
-
                                 Toast.makeText(studentRegistration.this, "User already exists",
                                         Toast.LENGTH_SHORT).show();
-
                             }
+
+
                         }
                     });
 

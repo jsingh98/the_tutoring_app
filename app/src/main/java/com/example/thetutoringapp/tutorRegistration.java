@@ -184,13 +184,12 @@ public class tutorRegistration extends AppCompatActivity {
 
                                 }
 
-                            } else {
-
-                                Toast.makeText(tutorRegistration.this, "User already exists",
-                                        Toast.LENGTH_SHORT).show();
-
                             }
 
+                            else {
+                                Toast.makeText(tutorRegistration.this, "User already exists",
+                                        Toast.LENGTH_SHORT).show();
+                            }
 
                         }
                     });
